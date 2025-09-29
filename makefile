@@ -1,8 +1,8 @@
 # i.e. https://itch-user.itch.io/itch-page
 ITCH_USER = the-bert
-ITCH_PAGE = frog-sokobon
+ITCH_PAGE = merchantandthefrog
 
-PROJECT_NAME 	= "frog-sokobon"
+PROJECT_NAME 	= "merchantandthefrog"
 PROJECT_VERSION = "0.1"
 
 

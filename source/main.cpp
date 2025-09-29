@@ -1,9 +1,9 @@
-#include <raylib.h>
-#include <math.h>
 
-#define BASE_WIDTH 480
-#define BASE_HEIGHT 480
-#define PROJECT_NAME "Game"
+#include "../include/global.hpp"
+
+#define BASE_WIDTH 720
+#define BASE_HEIGHT 720
+#define PROJECT_NAME "merchantandthefrog"
 
 #ifdef PLATFORM_WEB
     #include <emscripten/emscripten.h>
@@ -13,9 +13,6 @@
 #endif
 
 static int screen_width, screen_height, screen_scale;
-static bool recalculate_screen_resolution;
-static Shader shd_gradient;
-static float hue_timer;
 
 void Init(void);
 void Update(void);
@@ -46,7 +43,7 @@ void Init(void)
 {
     // SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_VSYNC_HINT);
 
-    InitWindow(BASE_WIDTH * 2, BASE_HEIGHT * 2, PROJECT_NAME);
+    InitWindow(BASE_WIDTH, BASE_HEIGHT, PROJECT_NAME);
 
     SetWindowMinSize(BASE_WIDTH, BASE_HEIGHT);
 
@@ -62,7 +59,7 @@ void Update(void)
 void Draw(void)
 {
     ClearBackground(BLACK);
-
+    
 
 
 }
