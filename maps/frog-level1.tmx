@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="14" height="10" tilewidth="8" tileheight="8" infinite="0" nextlayerid="8" nextobjectid="14">
+ <tileset firstgid="1" source="../tilesheets/spritesheet_extra.tsx"/>
+ <layer id="1" name="ground" width="14" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,31,31,31,31,31,31,
+0,0,0,0,0,0,0,0,31,31,31,31,31,31,
+0,0,0,0,0,0,0,0,31,31,31,31,31,31,
+31,0,0,0,0,0,0,0,0,31,31,31,31,31,
+31,31,0,0,0,0,0,0,0,0,0,0,0,0,
+31,31,0,0,0,0,0,0,0,0,0,0,0,0,
+31,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,31,31,31,31,31,0,0,0,0,0,0,0,0,
+0,31,31,31,31,31,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="6" name="water" width="14" height="10">
+  <data encoding="csv">
+2,2,2,2,2,2,2,2,0,0,0,0,0,0,
+2,2,2,2,2,2,2,2,0,0,0,0,0,0,
+2,2,2,2,2,2,2,2,0,0,0,0,0,0,
+0,2,2,2,2,2,2,2,2,0,0,0,0,0,
+0,0,2,2,2,2,2,2,2,2,2,2,2,2,
+0,0,2,2,2,2,2,2,2,2,2,2,2,2,
+0,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,0,0,0,0,0,2,2,2,2,2,2,2,2,
+2,0,0,0,0,0,2,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <objectgroup id="7" name="water">
+  <object id="5" x="0" y="0.181818" width="64" height="24"/>
+  <object id="7" x="15.8182" y="32.1818" width="96" height="32"/>
+  <object id="8" x="8.18182" y="24.1818" width="64" height="8"/>
+  <object id="9" x="48.1818" y="64.3636" width="64" height="16"/>
+  <object id="11" x="0" y="56" width="8" height="24"/>
+  <object id="13" x="8.18182" y="48.3636" width="8" height="16"/>
+ </objectgroup>
+</map>
