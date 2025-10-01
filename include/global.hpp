@@ -1,4 +1,3 @@
-#pragma once
 
 #ifndef GLOBAL_HEADER
 #define GLOBAL_HEADER
@@ -7,7 +6,7 @@
 #include <math.h>
 #include <iostream>
 
-
+#define STUPID_VARIABLE "yes"
 
 using namespace std;
 

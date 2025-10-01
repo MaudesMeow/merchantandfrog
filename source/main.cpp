@@ -5,10 +5,11 @@
 
 // --------------raytmx defines
 #define RAYTMX_IMPLEMENTATION
-#include "raytmx.h"
+#include <raytmx.h>
 
 #define CHECK_COLLISION OBJECT_GROUP true
 #define COLLISION_OBJECT_GROUP_NAME "water"
+#define SPAWN_COLLISION_OBJECT_GROUP "merchant_start"
 
 
 
@@ -108,6 +109,15 @@ void Init(void)
             collisionObjectGroup = layer.exact.objectGroup;
             break;
         }
+        if (strcmp(layer.name,SPAWN_COLLISION_OBJECT_GROUP) == 0 && layer.type == LAYER_TYPE_OBJECT_GROUP)
+        {
+            cout << "layer name is " << layer.name << endl;
+            player.pos.x = layer.offsetX;
+            player.pos.y = layer.offsetY;
+            cout << "offset is " << layer.offsetY << endl;
+             
+        }
+
     }
 
 
@@ -120,7 +130,7 @@ void Update(void)
 
     if (CheckCollisionTMXObjectGroupRec(collisionObjectGroup,player.hitBox,NULL))
     {
-        cout << " inda water" << endl;
+        // cout << " inda water" << endl;
     }
 
 
