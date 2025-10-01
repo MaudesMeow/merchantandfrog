@@ -2,8 +2,16 @@
 #include "global.hpp"
 #include "player.hpp"
 
+
+// --------------raytmx defines
 #define RAYTMX_IMPLEMENTATION
 #include "raytmx.h"
+
+#define CHECK_COLLISION OBJECT_GROUP true
+#define COLLISION_OBJECT_GROUP_NAME "water"
+
+
+
 
 
 #define BASE_WIDTH 960
@@ -17,7 +25,7 @@
     #define GLSL_VERSION (330)
 #endif
 
-static int screen_width, screen_height, screen_scale;
+
 
 void Init(void);
 void Update(void);
@@ -38,6 +46,7 @@ TmxMap* map;
 // ---------- global vars
 
 Camera2D camera;
+TmxObjectGroup collisionObjectGroup = {};
 
 
 // ---------------------------------------------------------------------------MAIN FUNCTION
@@ -76,7 +85,7 @@ void Init(void)
     playerSprite = LoadTexture("assets/player.png");
 
     // ---------load objects
-    player = Player(playerSprite, {0,0});
+    player = Player(playerSprite, {0,48});
     map = LoadTMX(tmx);
     
 
@@ -84,9 +93,23 @@ void Init(void)
     // Camera ---------------------------------------------------------
     camera = { 0 };
     camera.target = {(float)(map->width * map->tileWidth) /2.f , (float)(map->height * map->tileHeight) /2.f};  // Set the camera target to the player
-    camera.offset = { screen_width / 2.0f, screen_height / 2.0f };  // Center the camera
+    camera.offset = { BASE_WIDTH / 2.0f, BASE_HEIGHT / 2.0f };  // Center the camera
     camera.rotation = 0.0f;
-    camera.zoom = 2;  // Set the camera zoom to the SCALE factor
+    camera.zoom = 6;  // Set the camera zoom to the SCALE factor
+
+    // ADDING COLLISION WALLS TO GROUP FOR PLAYER
+    for (size_t i = 0; i < map->layersLength; i++)
+    {
+        TmxLayer layer = map->layers[i];
+        cout << "populating " << endl;
+        if (strcmp(layer.name,COLLISION_OBJECT_GROUP_NAME) == 0 && layer.type == LAYER_TYPE_OBJECT_GROUP)
+        {
+            cout << "layer name is " << layer.name << endl;
+            collisionObjectGroup = layer.exact.objectGroup;
+            break;
+        }
+    }
+
 
 }
 // ---------------------------------------------------------------------------UPDATE FUNCTION
@@ -94,6 +117,12 @@ void Update(void)
 {
 
     player.MovePlayer();
+
+    if (CheckCollisionTMXObjectGroupRec(collisionObjectGroup,player.hitBox,NULL))
+    {
+        cout << " inda water" << endl;
+    }
+
 
 }
 // ---------------------------------------------------------------------------Draw FUNCTION
@@ -105,6 +134,7 @@ void Draw(void)
         //DrawTexture(player.sprite,player.pos.x,player.pos.y,WHITE);
         DrawTMX(map,&camera,0,0,WHITE);
         DrawTextureEx(player.sprite,player.pos,0.0,0.5,WHITE);
+        DrawRectangleRec(player.hitBox,RED);
     EndMode2D();
 
 }
